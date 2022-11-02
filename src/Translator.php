@@ -2,6 +2,8 @@
 
 namespace Illum\Translation;
 
+use Illum\Translation\Exceptions\DirectoryNotFoundException;
+use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Arr;
 
 class Translator implements \Illuminate\Contracts\Translation\Translator {
@@ -11,18 +13,26 @@ class Translator implements \Illuminate\Contracts\Translation\Translator {
      */
     protected array $translations = [];
 
-    public function __construct($folder, $lang = 'en')
+    /**
+     * @param $folder
+     * @param string $lang
+     * @throws DirectoryNotFoundException
+     */
+    public function __construct($folder, string $lang = 'en')
     {
 
         $path = $folder.DIRECTORY_SEPARATOR.$lang;
 
-        $list = preg_grep('~\.(php)$~', scandir($path));
-        foreach ($list as $file){
-            $array = require $path.DIRECTORY_SEPARATOR.$file;
-            if(is_array($array)) {
-                $this->translations[basename($file, '.php')] = $array;
+        if (file_exists($path)){
+            $list = preg_grep('~\.(php)$~', scandir($path));
+            foreach ($list as $file){
+                $array = require $path.DIRECTORY_SEPARATOR.$file;
+                if(is_array($array)) {
+                    $this->translations[basename($file, '.php')] = $array;
+                }
             }
         }
+        throw new DirectoryNotFoundException();
     }
 
     /**
