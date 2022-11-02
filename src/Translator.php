@@ -31,8 +31,10 @@ class Translator implements \Illuminate\Contracts\Translation\Translator {
                     $this->translations[basename($file, '.php')] = $array;
                 }
             }
+        } else {
+            throw new DirectoryNotFoundException();
         }
-        throw new DirectoryNotFoundException();
+
     }
 
     /**
