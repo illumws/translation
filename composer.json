@@ -1,0 +1,22 @@
+{
+  "name": "illum/translation",
+  "description": "Tradutor de mesagens para pacote illum/validation",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alessandro Amos",
+      "email": "alessandroamos00@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Illum\\Translation\\": "src"
+    }
+  },
+  "require": {
+    "php": ">=7.4",
+    "illuminate/contracts": "v8.*",
+    "illuminate/collections": "v8.*"
+  }
+}
