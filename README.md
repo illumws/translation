@@ -27,7 +27,7 @@
 
 *esse pacote foi feito com esse unico objetivo
 
-as traduções são as mesmas feitas pelo laravel 
+as traduções são as mesmas feitas para o laravel 
 
 portugues - > https://github.com/lucascudo/laravel-pt-BR-localization
 
