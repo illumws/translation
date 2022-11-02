@@ -1,6 +1,6 @@
 <?php
 
-namespace Illuminate\Validation\Translation;
+namespace Illum\Translation;
 
 use Illuminate\Support\Arr;
 
